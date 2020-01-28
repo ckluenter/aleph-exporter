@@ -2,3 +2,11 @@
   name = "github.com/prometheus/client_golang"
   version = "0.9.4"
 
+ [[constraint]]
+   branch = "master"
+   name = "github.com/facebookgo/grace"
+
+[[constraint]]
+  name = "github.com/gorilla/mux"
+  version = "1.6.2"
+

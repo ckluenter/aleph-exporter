@@ -2,15 +2,24 @@ package main
 
 import (
 	"flag"
-	"log"
+	"github.com/ckluenter/aleph-exporter/pkg/observe"
+	"github.com/ckluenter/aleph-exporter/pkg/web"
 	"net/http"
-	"github.com/prometheus/client_golang/prometheus/promhttp"
+	"github.com/facebookgo/grace/gracehttp"
 )
 
 var addr = flag.String("listen-address", ":8080", "The address to listen on for HTTP requests.")
 
 func main() {
 	flag.Parse()
-	http.Handle("/metrics", promhttp.Handler())
-	log.Fatal(http.ListenAndServe(*addr, nil))
+	r := web.NewRouter()
+	r = observe.RegisterPrometheus(r)
+	srv := &http.Server{
+		Addr:              *addr,
+		Handler:           r,
+		ReadTimeout:       0,
+		WriteTimeout:      0,
+	}
+	gracehttp.Serve(srv)
 }
+

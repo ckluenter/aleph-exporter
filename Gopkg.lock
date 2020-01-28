@@ -10,6 +10,49 @@
   version = "v1.0.1"
 
 [[projects]]
+  digest = "1:0deddd908b6b4b768cfc272c16ee61e7088a60f7fe2f06c547bd3d8e1f8b8e77"
+  name = "github.com/davecgh/go-spew"
+  packages = ["spew"]
+  pruneopts = ""
+  revision = "8991bc29aa16c548c550c7ff78260e27b9ab7c73"
+  version = "v1.1.1"
+
+[[projects]]
+  branch = "master"
+  digest = "1:88b37f144a80737f9e5cd50c887c00c2f3c7211257f884b8b80ce97e61ed1ccb"
+  name = "github.com/facebookgo/clock"
+  packages = ["."]
+  pruneopts = ""
+  revision = "600d898af40aa09a7a93ecb9265d87b0504b6f03"
+
+[[projects]]
+  branch = "master"
+  digest = "1:17a1bc0fc5f7dc4e40168cee019a9ce7aea9253c437f3297448c0463ca7f45be"
+  name = "github.com/facebookgo/grace"
+  packages = [
+    "gracehttp",
+    "gracenet",
+  ]
+  pruneopts = ""
+  revision = "75cf19382434e82df4dd84953f566b8ad23d6e9e"
+
+[[projects]]
+  branch = "master"
+  digest = "1:d531a396c53c99aafa6e3f61af4cd395d162c0a438c92ccbcb86d91610b83b85"
+  name = "github.com/facebookgo/httpdown"
+  packages = ["."]
+  pruneopts = ""
+  revision = "5979d39b15c26299dc282711b0d65b113daccea6"
+
+[[projects]]
+  branch = "master"
+  digest = "1:247e57ca43a89cd87cdc42194faba92ce28a4f11d171cbb4c1473ede7f297c0d"
+  name = "github.com/facebookgo/stats"
+  packages = ["."]
+  pruneopts = ""
+  revision = "1b76add642e42c6ffba7211ad7b3939ce654526e"
+
+[[projects]]
   digest = "1:b852d2b62be24e445fcdbad9ce3015b44c207815d631230dfce3f14e7803f5bf"
   name = "github.com/golang/protobuf"
   packages = [
@@ -24,12 +67,44 @@
   version = "v1.3.2"
 
 [[projects]]
+  digest = "1:883e2fdbdd0e577187bd8106fec775b1176059af267a7f40eba5308955c67d52"
+  name = "github.com/gorilla/mux"
+  packages = ["."]
+  pruneopts = ""
+  revision = "00bdffe0f3c77e27d2cf6f5c70232a2d3e4d9c15"
+  version = "v1.7.3"
+
+[[projects]]
   digest = "1:63722a4b1e1717be7b98fc686e0b30d5e7f734b9e93d7dee86293b6deab7ea28"
   name = "github.com/matttproud/golang_protobuf_extensions"
   packages = ["pbutil"]
   pruneopts = ""
   revision = "c12348ce28de40eed0136aa2b644d0ee0650e56c"
   version = "v1.0.1"
+
+[[projects]]
+  digest = "1:e08c534e8bd62efd64d644a2aca7bdc22f6d194e1ab2b132ca1e1c880c1ca22c"
+  name = "github.com/parnurzeal/gorequest"
+  packages = ["."]
+  pruneopts = ""
+  revision = "b735e503d8bf955a72baf89723cdb50ab0bd668c"
+  version = "v0.2.16"
+
+[[projects]]
+  digest = "1:c45802472e0c06928cd997661f2af610accd85217023b1d5f6331bebce0671d3"
+  name = "github.com/pkg/errors"
+  packages = ["."]
+  pruneopts = ""
+  revision = "614d223910a179a466c1767a985424175c39b465"
+  version = "v0.9.1"
+
+[[projects]]
+  digest = "1:256484dbbcd271f9ecebc6795b2df8cad4c458dd0f5fd82a8c2fa0c29f233411"
+  name = "github.com/pmezard/go-difflib"
+  packages = ["difflib"]
+  pruneopts = ""
+  revision = "792786c7400a136282c1664665ae0a8db921c6c2"
+  version = "v1.0.0"
 
 [[projects]]
   digest = "1:c826496cad27bd9a7644a01230a79d472b4093dd33587236e8f8369bb1d8534e"
@@ -75,9 +150,76 @@
   revision = "6d489fc7f1d9cd890a250f3ea3431b1744b9623f"
   version = "v0.0.8"
 
+[[projects]]
+  digest = "1:f7b541897bcde05a04a044c342ddc7425aab7e331f37b47fbb486cd16324b48e"
+  name = "github.com/stretchr/testify"
+  packages = ["assert"]
+  pruneopts = ""
+  revision = "221dbe5ed46703ee255b1da0dec05086f5035f62"
+  version = "v1.4.0"
+
+[[projects]]
+  branch = "master"
+  digest = "1:bce1fb1dafa615413d845819aa75ba69d0979cdc2ac3b840e1c19c802a737916"
+  name = "golang.org/x/net"
+  packages = [
+    "idna",
+    "publicsuffix",
+  ]
+  pruneopts = ""
+  revision = "6afb5195e5aab057fda82e27171243402346b0ad"
+
+[[projects]]
+  digest = "1:740b51a55815493a8d0f2b1e0d0ae48fe48953bf7eaf3fcc4198823bf67768c0"
+  name = "golang.org/x/text"
+  packages = [
+    "collate",
+    "collate/build",
+    "internal/colltab",
+    "internal/gen",
+    "internal/language",
+    "internal/language/compact",
+    "internal/tag",
+    "internal/triegen",
+    "internal/ucd",
+    "language",
+    "secure/bidirule",
+    "transform",
+    "unicode/bidi",
+    "unicode/cldr",
+    "unicode/norm",
+    "unicode/rangetable",
+  ]
+  pruneopts = ""
+  revision = "342b2e1fbaa52c93f31447ad2c6abc048c63e475"
+  version = "v0.3.2"
+
+[[projects]]
+  digest = "1:2efc9662a6a1ff28c65c84fc2f9030f13d3afecdb2ecad445f3b0c80e75fc281"
+  name = "gopkg.in/yaml.v2"
+  packages = ["."]
+  pruneopts = ""
+  revision = "53403b58ad1b561927d19068c655246f2db79d48"
+  version = "v2.2.8"
+
+[[projects]]
+  digest = "1:a007311f74ec15ad1c56672245793e98e67566e78a0bee8b575f9856a8d5299a"
+  name = "moul.io/http2curl"
+  packages = ["."]
+  pruneopts = ""
+  revision = "5cd742060b0e0de91f875277b77dd7d7e68b23ca"
+  version = "v2"
+
 [solve-meta]
   analyzer-name = "dep"
   analyzer-version = 1
-  input-imports = ["github.com/prometheus/client_golang/prometheus/promhttp"]
+  input-imports = [
+    "github.com/facebookgo/grace/gracehttp",
+    "github.com/gorilla/mux",
+    "github.com/parnurzeal/gorequest",
+    "github.com/prometheus/client_golang/prometheus",
+    "github.com/prometheus/client_golang/prometheus/promhttp",
+    "github.com/stretchr/testify/assert",
+  ]
   solver-name = "gps-cdcl"
   solver-version = 1
