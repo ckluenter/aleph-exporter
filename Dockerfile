@@ -1,4 +1,4 @@
-FROM golang:1.8
+FROM jimdo/golang-dep
 WORKDIR /go/src/app
 COPY . .
 RUN make

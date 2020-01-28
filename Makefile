@@ -9,7 +9,7 @@ vendor:
 aleph-exporter: vendor
 	go build ./cmd/...
 
-docker: aleph-exporter
+docker: 
 	docker build -t aleph-exporter .
 
 docker-push: 
@@ -22,7 +22,7 @@ clean:
 	rm -r vendor
 	rm aleph-exporter
 
-lint:
+lint: vendor
 	golint
 	gosec -exclude=G104 ./...
 
