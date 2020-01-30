@@ -13,9 +13,10 @@ var (
 			Help: "The number index/ingest jobs ",
 		},
 		[]string{
-			"job_name",
+			"collection_name",
+			"job_id",
+			"stage_task",
 			"stage",
-			"status",
 		},
 	)
 )
@@ -30,8 +31,17 @@ func RegisterPrometheus(m *mux.Router) *mux.Router {
 	return m
 }
 
-func UpdatePrometheus(status AlephCollectionStatus) {
-	jobStatusMetric.WithLabelValues(status.Collection.Label, "finished").Set(float64(status.Finished))
-	jobStatusMetric.WithLabelValues(status.Collection.Label, "pending").Set(float64(status.Pending))
-	jobStatusMetric.WithLabelValues(status.Collection.Label, "running").Set(float64(status.Running))
+func UpdatePrometheus(status AlephStatus) {
+	task_list := []string{"runnig","finished","pending"}
+
+	for _,collection := range status.Collections {
+		for _,job := range collection.Jobs {
+			for _,stage := range job.Stages {
+				for _, task := range task_list {
+					jobStatusMetric.WithLabelValues(collection.Collection.Label, stage.Job_id, task, stage.Stage).
+						Set(float64(stage.Running))
+				}
+			}
+		}
+	}
 }

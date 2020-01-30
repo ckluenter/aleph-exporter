@@ -1,6 +1,7 @@
 package observe
 
 import (
+	"crypto/tls"
 	"encoding/json"
 	"fmt"
 	"github.com/parnurzeal/gorequest"
@@ -39,11 +40,15 @@ type AlephStatus struct {
 	Total       int                     `json:"total"`
 }
 
-func GetAlephStatus(host string, token string) string {
+func GetAlephStatus(host string, token string, skipTLS bool) string {
 	request := gorequest.New()
-	_, body, _ := request.Get(host).
+	_, body, err := request.Get(host).
 		Set("Authorization", "ApiKey "+token).
+		TLSClientConfig(&tls.Config{InsecureSkipVerify:skipTLS}).
 		End()
+	if err != nil {
+		fmt.Printf("ERROR: %v", err)
+	}
 	return body
 }
 
