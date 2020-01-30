@@ -2,6 +2,7 @@ package main
 
 import (
 	"flag"
+	"fmt"
 	"github.com/ckluenter/aleph-exporter/pkg/observe"
 	"github.com/ckluenter/aleph-exporter/pkg/web"
 	"net/http"
@@ -28,6 +29,8 @@ func main() {
 		ReadTimeout:       0,
 		WriteTimeout:      0,
 	}
+
+	fmt.Printf("aleph exporter started. Listening on %s and exposing api from %s \n\n", *addr,alephUrl(*alephHost))
 	go func() {
 		for{
 			requestBody := observe.GetAlephStatus(alephUrl(*alephHost), *alephToken,true)

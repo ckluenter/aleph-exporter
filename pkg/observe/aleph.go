@@ -47,7 +47,7 @@ func GetAlephStatus(host string, token string, skipTLS bool) string {
 		TLSClientConfig(&tls.Config{InsecureSkipVerify:skipTLS}).
 		End()
 	if err != nil {
-		fmt.Printf("ERROR: %v", err)
+		fmt.Printf("ERROR: %v\n", err)
 	}
 	return body
 }
@@ -56,7 +56,7 @@ func ParseAlephStatus(body []byte) AlephStatus {
 	var status = AlephStatus{}
 	err := json.Unmarshal(body, &status)
 	if err != nil {
-		fmt.Printf("Error: %v",err)
+		fmt.Printf("Error: %v\n",err)
 	}
 	return status
 }
