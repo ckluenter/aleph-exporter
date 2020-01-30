@@ -10,13 +10,13 @@ aleph-exporter: vendor
 	go build ./cmd/...
 
 docker: 
-	docker build -t aleph-exporter .
+	docker build -t alephexporter .
 
 docker-push: 
 	./docker-push.sh
 
 docker-run: docker
-	docker run -d -p 9090:9090 aleph-exporter
+	docker run -e ALEPH_HOST=$$ALEPH_HOST -e ALEPH_TOKEN=$$ALEPH_TOKEN -d -p 9090:9090 alephexporter
 
 clean:
 	rm -r vendor
