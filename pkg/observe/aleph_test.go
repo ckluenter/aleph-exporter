@@ -61,10 +61,10 @@ func TestAlephParsing(t *testing.T) {
 }
 	`)
 	parsedData := ParseAlephStatus(data)
-	assert.Equal(t,2,parsedData.Total)
-	assert.Equal(t,2, len(parsedData.Collections))
-	assert.Equal(t,6196,parsedData.Collections[1].Finished)
-	assert.Equal(t,"some_collection_label",parsedData.Collections[1].Collection.Label)
-	assert.Equal(t,174,parsedData.Collections[1].Jobs[0].Running)
-	assert.Equal(t,"index",parsedData.Collections[1].Jobs[0].Stages[0].Stage)
+	assert.Equal(t, 2, parsedData.Total)
+	assert.Equal(t, 2, len(parsedData.Collections))
+	assert.Equal(t, 6196, parsedData.Collections[1].Finished)
+	assert.Equal(t, "some_collection_label", parsedData.Collections[1].Collection.Label)
+	assert.Equal(t, 174, parsedData.Collections[1].Jobs[0].Running)
+	assert.Equal(t, "index", parsedData.Collections[1].Jobs[0].Stages[0].Stage)
 }
