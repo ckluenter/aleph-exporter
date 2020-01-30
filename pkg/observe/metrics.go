@@ -32,15 +32,12 @@ func RegisterPrometheus(m *mux.Router) *mux.Router {
 }
 
 func UpdatePrometheus(status AlephStatus) {
-	task_list := []string{"runnig","finished","pending"}
-
 	for _,collection := range status.Collections {
 		for _,job := range collection.Jobs {
 			for _,stage := range job.Stages {
-				for _, task := range task_list {
-					jobStatusMetric.WithLabelValues(collection.Collection.Label, stage.Job_id, task, stage.Stage).
-						Set(float64(stage.Running))
-				}
+				jobStatusMetric.WithLabelValues(collection.Collection.Label, stage.Job_id, stage.Stage, "running").Set(float64(stage.Running))
+				jobStatusMetric.WithLabelValues(collection.Collection.Label, stage.Job_id, stage.Stage, "pending").Set(float64(stage.Pending))
+				jobStatusMetric.WithLabelValues(collection.Collection.Label, stage.Job_id, stage.Stage, "finished").Set(float64(stage.Finished))
 			}
 		}
 	}
