@@ -30,12 +30,8 @@ func RegisterPrometheus(m *mux.Router) *mux.Router {
 	return m
 }
 
-func UpdatePrometheus(status AlephStatus) {
-	for _,job := range status.jobs {
-		for _,stage := range job.stages {
-			jobStatusMetric.WithLabelValues(job.collection.label,stage.stage,"finished").Set(stage.finished)
-			jobStatusMetric.WithLabelValues(job.collection.label,stage.stage,"running").Set(stage.finished)
-			jobStatusMetric.WithLabelValues(job.collection.label,stage.stage,"pending").Set(stage.finished)
-		}
-	}
+func UpdatePrometheus(status AlephCollectionStatus) {
+	jobStatusMetric.WithLabelValues(status.Collection.Label, "finished").Set(float64(status.Finished))
+	jobStatusMetric.WithLabelValues(status.Collection.Label, "pending").Set(float64(status.Pending))
+	jobStatusMetric.WithLabelValues(status.Collection.Label, "running").Set(float64(status.Running))
 }
