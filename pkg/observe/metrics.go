@@ -19,6 +19,15 @@ var (
 			"stage",
 		},
 	)
+	apiStatusMetric = prometheus.NewGaugeVec(
+		prometheus.GaugeOpts{
+			Name: "aleph_up",
+			Help: "Aleph api up",
+		},
+		[]string{
+			"hostname",
+		},
+	)
 )
 
 // RegisterPrometheus adds the prometheus handler to the mux router
@@ -26,6 +35,7 @@ var (
 // when the /metrics route is hit.
 func RegisterPrometheus(m *mux.Router) *mux.Router {
 	prometheus.MustRegister(jobStatusMetric)
+	prometheus.MustRegister(apiStatusMetric)
 
 	m.Handle("/metrics", promhttp.Handler())
 	return m
@@ -40,5 +50,13 @@ func UpdatePrometheus(status AlephStatus) {
 				jobStatusMetric.WithLabelValues(collection.Collection.Label, stage.Job_id, stage.Stage, "finished").Set(float64(stage.Finished))
 			}
 		}
+	}
+}
+
+func AlephApiUp(hostname string, reachable bool) {
+	if reachable == true {
+		apiStatusMetric.WithLabelValues(hostname).Set(1)
+	} else {
+		apiStatusMetric.WithLabelValues(hostname).Set(0)
 	}
 }
