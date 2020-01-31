@@ -1,5 +1,5 @@
 # aleph-exporter
-Exposes some metrics from the aleph api as prometheus metrics.
+Exposes some metrics from the aleph api (https://github.com/alephdata/aleph) as prometheus metrics.
 ## Test
 `make test`
 
