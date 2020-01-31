@@ -20,5 +20,5 @@ clean:
 
 lint: 
 	golint
-	gosec -exclude=G104 ./...
+	gosec -exclude=G402,G104 ./...
 
