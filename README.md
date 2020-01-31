@@ -11,5 +11,5 @@ Exposes some metrics from the aleph api (https://github.com/alephdata/aleph) as 
 ## Docker
 
 ```
-docker run --rm -e ALEPH_HOST=$ALEPH_HOST -e ALEPH_TOKEN=$ALEPH_TOKEN ckluenter/alephexporter
+docker run --rm -p 8080:8080 -e ALEPH_HOST=$ALEPH_HOST -e ALEPH_TOKEN=$ALEPH_TOKEN ckluenter/alephexporter
 ```
