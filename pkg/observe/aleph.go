@@ -40,16 +40,16 @@ type AlephStatus struct {
 	Total       int                     `json:"total"`
 }
 
-func GetAlephStatus(host string, token string, skipTLS bool) string {
+func GetAlephStatus(host string, token string, skipTLS bool) ([]error, string) {
 	request := gorequest.New()
 	_, body, err := request.Get(host).
 		Set("Authorization", "ApiKey "+token).
 		TLSClientConfig(&tls.Config{InsecureSkipVerify: skipTLS}).
 		End()
 	if err != nil {
-		fmt.Printf("ERROR: %v\n", err)
+		return err,""
 	}
-	return body
+	return nil,body
 }
 
 func ParseAlephStatus(body []byte) AlephStatus {

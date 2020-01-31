@@ -39,9 +39,15 @@ func main() {
 	fmt.Printf("aleph exporter started. Listening on %s and exposing api from %s \n\n", *port, alephUrl(*alephHost))
 	go func() {
 		for {
-			requestBody := observe.GetAlephStatus(alephUrl(*alephHost), *alephToken, true)
-			status := observe.ParseAlephStatus([]byte(requestBody))
-			observe.UpdatePrometheus(status)
+			err,requestBody := observe.GetAlephStatus(alephUrl(*alephHost), *alephToken, true)
+			if err != nil {
+				fmt.Print(err, "\n")
+				observe.AlephApiUp(*alephHost,false)
+			} else {
+				status := observe.ParseAlephStatus([]byte(requestBody))
+				observe.UpdatePrometheus(status)
+				observe.AlephApiUp(*alephHost,true)
+			}
 			time.Sleep(time.Duration(10 * time.Second))
 
 		}
