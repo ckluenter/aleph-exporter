@@ -1,7 +1,13 @@
-FROM golang:1.12
+FROM golang:1.12 as builder
 WORKDIR /app/
 COPY . .
-RUN make test
+ENV CGO_ENABLED=0
 RUN make
 EXPOSE 8080
+CMD ["/app/aleph-exporter"]
+
+FROM alpine:latest
+RUN apk --no-cache add ca-certificates
+WORKDIR /app/
+COPY --from=builder /app/aleph-exporter /app/aleph-exporter
 CMD ["/app/aleph-exporter"]

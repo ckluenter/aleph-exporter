@@ -8,6 +8,11 @@ jobs:
     steps:
     - name: checkout
       uses: actions/checkout@v1
+    - uses: actions/setup-go@v1
+      with:
+        go-version: '1.12' # The Go version to download (if necessary) and use.
+    - name: test
+      run: make test
     - name: docker-build
       run: make docker
     - name: Publish to Registry
