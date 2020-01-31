@@ -1,4 +1,6 @@
 # aleph-exporter
+![CI](https://github.com/ckluenter/aleph-exporter/workflows/CI/badge.svg)
+
 Exposes some metrics from the aleph api (https://github.com/alephdata/aleph) as prometheus metrics.
 ## Test
 `make test`
