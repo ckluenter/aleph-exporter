@@ -19,6 +19,6 @@ clean:
 	rm aleph-exporter
 
 lint: 
-	golint
-	gosec -exclude=G402,G104 ./...
+	$$(go list -f {{.Target}} golang.org/x/lint/golint)
+	$$(go list -f {{.Target}} github.com/securego/gosec/cmd/gosec) -exclude=G402,G104 ./...
 
