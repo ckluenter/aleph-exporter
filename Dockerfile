@@ -1,7 +1,7 @@
-FROM jimdo/golang-dep
-WORKDIR /go/src/app
+FROM golang:1.12
+WORKDIR /app/
 COPY . .
 RUN make test
 RUN make
 EXPOSE 8080
-CMD ["/go/src/app/aleph-exporter"]
+CMD ["/app/aleph-exporter"]

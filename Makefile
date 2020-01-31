@@ -1,12 +1,9 @@
-build: vendor aleph-exporter
+build: aleph-exporter
 
-test: vendor
+test: 
 	go test ./...
 
-vendor:
-	dep ensure
-
-aleph-exporter: vendor
+aleph-exporter: 
 	go build ./cmd/...
 
 docker: 
@@ -19,10 +16,9 @@ docker-run: docker
 	docker run -e ALEPH_HOST=$$ALEPH_HOST -e ALEPH_TOKEN=$$ALEPH_TOKEN -d -p 9090:9090 alephexporter
 
 clean:
-	rm -r vendor
 	rm aleph-exporter
 
-lint: vendor
+lint: 
 	golint
 	gosec -exclude=G104 ./...
 
