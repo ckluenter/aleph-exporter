@@ -5,6 +5,7 @@ import (
 	"encoding/json"
 	"fmt"
 	"github.com/parnurzeal/gorequest"
+	"github.com/prometheus/client_golang/prometheus"
 )
 
 type AlephStage struct {
@@ -41,6 +42,8 @@ type AlephStatus struct {
 }
 
 func GetAlephStatus(host string, token string, skipTLS bool) ([]error, string) {
+	timer:= prometheus.NewTimer(requestDurationMetric)
+	defer timer.ObserveDuration()
 	request := gorequest.New()
 	_, body, err := request.Get(host).
 		Set("Authorization", "ApiKey "+token).

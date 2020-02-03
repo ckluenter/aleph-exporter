@@ -28,6 +28,11 @@ var (
 			"hostname",
 		},
 	)
+	requestDurationMetric = prometheus.NewHistogram(prometheus.HistogramOpts{
+		Name:        "aleph_http_request_duration_seconds",
+		Help:        "Histogram for the runtime of the request to the aleph api",
+		Buckets:     prometheus.LinearBuckets(0.01,0.01,10),
+	})
 )
 
 // RegisterPrometheus adds the prometheus handler to the mux router
