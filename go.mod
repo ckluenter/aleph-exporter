@@ -1,4 +1,4 @@
-module github.com/ckluenter/aleph-exporter
+module aleph-exporter
 
 require (
 	github.com/beorn7/perks v1.0.1 // indirect

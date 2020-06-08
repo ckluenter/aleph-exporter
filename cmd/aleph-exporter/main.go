@@ -3,8 +3,8 @@ package main
 import (
 	"flag"
 	"fmt"
-	"github.com/ckluenter/aleph-exporter/pkg/observe"
-	"github.com/ckluenter/aleph-exporter/pkg/web"
+	"aleph-exporter/pkg/observe"
+	"aleph-exporter/pkg/web"
 	"github.com/facebookgo/grace/gracehttp"
 	"net/http"
 	"os"
